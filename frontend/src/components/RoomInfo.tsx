@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
+import "swiper/scss";
+import "swiper/scss/effect-coverflow";
 import "../assets/sass/roomInfo.scss";
+
 import { EffectCoverflow } from "swiper/modules";
 import RoomCard from "./RoomCard";
 
