@@ -8,6 +8,7 @@ import { EffectCoverflow } from "swiper/modules";
 import RoomCard from "./RoomCard";
 
 const RoomInfo = () => {
+  // 
   return (
     <>
       <Swiper
