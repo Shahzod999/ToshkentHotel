@@ -1,32 +1,14 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/swiper-bundle.css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "../assets/sass/roomInfo.scss";
-
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { SwiperSlide } from "swiper/react";
 
 import RoomCard from "./RoomCard";
+import Testimonials from "./Testimonials";
+import RoomCardHorizontal from "./RoomCardHorizontal";
+import SwiperMain from "./SwiperMain";
 
 const RoomInfo = () => {
-  //
   return (
     <>
-      <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        modules={[EffectCoverflow, Pagination]}
-        className="mySwiper">
+      <SwiperMain>
         <SwiperSlide>
           <RoomCard />
         </SwiperSlide>
@@ -45,22 +27,12 @@ const RoomInfo = () => {
         <SwiperSlide>
           <RoomCard />
         </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-      </Swiper>
+      </SwiperMain>
+
+      <Testimonials />
+
+      <RoomCardHorizontal />
+      <RoomCardHorizontal />
     </>
   );
 };

@@ -29,7 +29,7 @@ const RoomCard = () => {
             <FaComments />
           </i>
         </div>
-        <button className="card-button">Book Now</button>
+        <button className="card-button">EXPLORE</button>
       </div>
     </div>
   );
