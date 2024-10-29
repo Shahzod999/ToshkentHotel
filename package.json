@@ -1,0 +1,12 @@
+{
+  "name": "toshkenthotel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "npm run dev --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

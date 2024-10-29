@@ -1,0 +1,35 @@
+.testimonials {
+  text-align: center;
+  &__card {
+    h3 {
+      font-family: var(--second-family);
+      font-weight: 700;
+      font-size: 60px;
+      color: #14274a;
+    }
+
+    p {
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 30px;
+      color: #14274a;
+      margin: 20px 0;
+    }
+    span {
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 25px;
+      color: #14274a;
+    }
+  }
+  &__buttons {
+    button {
+      margin: 20px 10px;
+      background-color: #e0b973;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  }
+}

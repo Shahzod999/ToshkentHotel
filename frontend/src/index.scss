@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --font-family: "Montserrat", sans-serif;
+  --second-family: "Bona Nova SC", serif;
+  --third-family: "Arial", sans-serif;
+  --font3: "Roboto", sans-serif;
+}
+
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(96, 96, 96);
+}
+.cursor {
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.cursor:hover {
+  transform: scale(1.1);
+}
+.cursor:active {
+  transform: scale(1);
+}
