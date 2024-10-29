@@ -2,9 +2,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/swiper-bundle.css";
 import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 import "../assets/sass/roomInfo.scss";
 
-import { EffectCoverflow } from "swiper/modules";
+import { EffectCoverflow, Pagination } from "swiper/modules";
+
 import RoomCard from "./RoomCard";
 
 const RoomInfo = () => {
@@ -23,7 +25,7 @@ const RoomInfo = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        modules={[EffectCoverflow]}
+        modules={[EffectCoverflow, Pagination]}
         className="mySwiper">
         <SwiperSlide>
           <RoomCard />
