@@ -1,14 +1,14 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow } from "swiper/modules";
 
-import "swiper/css";
+import "swiper/swiper-bundle.css";
 import "swiper/css/effect-coverflow";
 import "../assets/sass/roomInfo.scss";
 
-import { EffectCoverflow } from "swiper/modules";
 import RoomCard from "./RoomCard";
 
 const RoomInfo = () => {
-  // 
+  //
   return (
     <>
       <Swiper
