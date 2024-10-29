@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/scss";
-import "swiper/scss/effect-coverflow";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
 import "../assets/sass/roomInfo.scss";
 
 import { EffectCoverflow } from "swiper/modules";
