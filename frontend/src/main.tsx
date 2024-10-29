@@ -6,7 +6,7 @@ import Home from "./pages/Home.tsx";
 import Error from "./components/Error.tsx";
 import Rooms from "./pages/Rooms.tsx";
 import Contact from "./pages/Contact.tsx";
-import Service from "./pages/Service.tsx";
+import Facilities from "./pages/Facilities.tsx";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/service",
-        element: <Service />,
+        path: "/facilities",
+        element: <Facilities />,
       },
     ],
   },

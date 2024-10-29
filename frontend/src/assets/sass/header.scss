@@ -1,8 +1,6 @@
 header {
   display: flex;
-  min-height: 100vh;
-  background-image: url("header.png");
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
   .headerWrapper {
@@ -17,12 +15,14 @@ header {
       justify-content: center;
       flex: 1;
       width: 40%;
+      .headerContactText {
+        margin: 50px 0;
+      }
       p {
         display: flex;
         flex-direction: column;
 
         font-family: var(--font-family);
-        font-weight: 400;
         font-size: 45px;
         color: #fff;
         span {
@@ -35,7 +35,6 @@ header {
       }
       span {
         font-family: var(--font-family);
-        font-weight: 400;
         font-size: 20px;
         letter-spacing: 0.1em;
         color: #fff;

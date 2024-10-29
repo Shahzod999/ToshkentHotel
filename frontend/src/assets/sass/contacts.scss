@@ -1,0 +1,75 @@
+.contacts {
+  padding: 250px 0;
+  &__text {
+    margin-bottom: 150px;
+
+    h2 {
+      font-family: var(--second-family);
+      font-weight: 700;
+      font-size: 50px;
+      color: #14274a;
+      margin-bottom: 25px;
+    }
+    p {
+      font-family: var(--font-family);
+      font-size: 25px;
+      color: #14274a;
+    }
+  }
+  &__card {
+    display: flex;
+    gap: 50px;
+    &__text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      a,
+      h3 {
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 20px;
+        color: #14274a;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 25px;
+        color: #14274a;
+      }
+    }
+    &__form {
+      flex: 1;
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        label {
+          font-family: var(--third-family);
+          font-weight: 400;
+          font-size: 25px;
+          color: #14274a;
+        }
+        input {
+          padding: 15px;
+        }
+        button {
+          width: fit-content;
+          align-self: flex-end;
+          padding: 25px;
+          font-family: var(--font-family);
+          font-weight: 700;
+          font-size: 25px;
+          color: #fff;
+          background-color: #e0b973;
+          border-radius: 10px;
+          border: none;
+        }
+      }
+    }
+  }
+}

@@ -13,10 +13,10 @@ const Navigation = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/rooms">Rooms</Link>
+          <Link to="/facilities">Facilities</Link>
         </li>
         <li>
-          <Link to="/service">Service</Link>
+          <Link to="/rooms">Rooms</Link>
         </li>
         <li>
           <Link to="/contact">Contact-us</Link>
