@@ -1,0 +1,59 @@
+.auth {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  backdrop-filter: sepia(100%);
+  z-index: 999;
+  transition: all 0.5s ease-in-out;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 0.5px solid rgb(213, 213, 213);
+    border-radius: 5px;
+    padding: 15px 45px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    label {
+      font-family: var(--third-family);
+      font-weight: 500;
+    }
+    .visible {
+      font-size: 25px;
+    }
+    .exit {
+      font-size: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: black;
+      padding: 10px 15px;
+      border-radius: 0 0 0 5px;
+    }
+    button {
+      padding: 15px;
+      background-color: brown;
+      border: none;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+    }
+  }
+}

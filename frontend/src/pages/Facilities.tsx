@@ -37,7 +37,7 @@ const Facilities = () => {
 
       <div className="facilitiesHolder">
         {facilities.map((item) => (
-          <div className="facilitiesHolder__cards">
+          <div className="facilitiesHolder__cards" key={item.text}>
             <img src={item.img} alt="" />
             <span>{item.text}</span>
           </div>
