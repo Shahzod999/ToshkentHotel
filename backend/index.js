@@ -1,16 +1,24 @@
 import express from "express";
 import dotenv from "dotenv";
+import userRoutes from "./routes/userRoutes.js";
+import cookieParser from "cookie-parser";
+import connectDB from "./config/db.js";
 
 dotenv.config();
 
 const port = process.env.PORT || 5001;
 
+connectDB();
+
 const app = express();
 
 app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.use("/auth", userRoutes);
 
 app.listen(port, () => console.log(`Server running on port: ${port}`));
-
 
 app.get("/", (req, res) => {
   res.json({ message: "backConnected" });

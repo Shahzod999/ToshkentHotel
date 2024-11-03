@@ -7,7 +7,9 @@ import { FaPersonWalkingDashedLineArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Auth = () => {
+  const [variant, setVariant] = useState("login");
   const [passwordVisible, setPasswordVisible] = useState(false);
+
 
   return (
     <div className="auth">
@@ -23,7 +25,14 @@ const Auth = () => {
         <span onClick={() => setPasswordVisible(!passwordVisible)} className="visible">
           {passwordVisible ? <PiEyesFill /> : <HiEyeSlash />}
         </span>
-
+        <div className="variants">
+          <span className={`${variant == "login" ? "actived" : ""} cursor`} onClick={() => setVariant("login")}>
+            Login
+          </span>
+          <span className={`${variant == "register" ? "actived" : ""} cursor`} onClick={() => setVariant("register")}>
+            Register
+          </span>
+        </div>
         <button type="submit" className="cursor">
           Enter
           <FaPersonWalkingDashedLineArrowRight size={25} />
