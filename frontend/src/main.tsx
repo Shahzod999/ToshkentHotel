@@ -8,6 +8,8 @@ import Rooms from "./pages/Rooms.tsx";
 import Contact from "./pages/Contact.tsx";
 import Facilities from "./pages/Facilities.tsx";
 import Auth from "./pages/Auth.tsx";
+import { Provider } from "react-redux";
+import { store } from "./app/store.ts";
 
 const router = createBrowserRouter([
   {
@@ -39,4 +41,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")!).render(<RouterProvider router={router} />);
+createRoot(document.getElementById("root")!).render(
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
+);

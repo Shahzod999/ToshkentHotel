@@ -2,7 +2,18 @@ import { Link } from "react-router-dom";
 import "../assets/sass/nav.scss";
 import { RiAdminFill } from "react-icons/ri";
 import { GiExitDoor } from "react-icons/gi";
+import { useAppDispatch, useAppSelector } from "../app/hooks/hooks";
+import { logOut, selecteduserInfo } from "../app/features/useInfoSlice";
 const Navigation = () => {
+  const dispatch = useAppDispatch();
+  const userInfo = useAppSelector(selecteduserInfo);
+
+  console.log(userInfo, "212");
+
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
+
   return (
     <nav>
       <Link to="/" className="logo">
@@ -23,10 +34,15 @@ const Navigation = () => {
           <Link to="/contact">Contact-us</Link>
         </li>
         <li>
-          <Link to="/admin">
-            <RiAdminFill />
-            <GiExitDoor />
-          </Link>
+          {userInfo ? (
+            <span onClick={handleLogout}>
+              <GiExitDoor />
+            </span>
+          ) : (
+            <Link to="/admin">
+              <RiAdminFill />
+            </Link>
+          )}
         </li>
       </ul>
     </nav>
