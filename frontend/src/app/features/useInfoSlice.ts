@@ -17,13 +17,13 @@ export const userInfoSlice = createSlice({
       state.userInfo = action.payload
       localStorage.setItem("userInfo", action.payload)
     },
-    logOut: (state) => {
+    logOutState: (state) => {
       state.userInfo = ""
       localStorage.removeItem("userInfo")
     }
   },
 })
 
-export const { addUserInfo, logOut } = userInfoSlice.actions
+export const { addUserInfo, logOutState } = userInfoSlice.actions
 export const selecteduserInfo = (state: RootState) => state.userInfo.userInfo
 export default userInfoSlice.reducer

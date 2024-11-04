@@ -3,15 +3,22 @@ import "../assets/sass/nav.scss";
 import { RiAdminFill } from "react-icons/ri";
 import { GiExitDoor } from "react-icons/gi";
 import { useAppDispatch, useAppSelector } from "../app/hooks/hooks";
-import { logOut, selecteduserInfo } from "../app/features/useInfoSlice";
+import { logOutState, selecteduserInfo } from "../app/features/useInfoSlice";
+import { useLogOutMutation } from "../app/api/userApiSlice";
 const Navigation = () => {
   const dispatch = useAppDispatch();
   const userInfo = useAppSelector(selecteduserInfo);
+  const [logOut] = useLogOutMutation();
 
   console.log(userInfo, "212");
 
-  const handleLogout = () => {
-    dispatch(logOut());
+  const handleLogout = async () => {
+    try {
+      await logOut({}).unwrap();
+      dispatch(logOutState());
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
   };
 
   return (
