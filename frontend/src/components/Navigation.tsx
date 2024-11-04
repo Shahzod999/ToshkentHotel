@@ -40,17 +40,24 @@ const Navigation = () => {
         <li>
           <Link to="/contact">Contact-us</Link>
         </li>
-        <li>
-          {userInfo ? (
-            <span onClick={handleLogout}>
-              <GiExitDoor />
-            </span>
-          ) : (
-            <Link to="/admin">
-              <RiAdminFill />
-            </Link>
-          )}
-        </li>
+        {userInfo ? (
+          <>
+            <li>
+              <Link to="/admin">
+                <RiAdminFill />
+              </Link>
+            </li>
+            <li>
+              <span onClick={handleLogout}>
+                <GiExitDoor />
+              </span>
+            </li>
+          </>
+        ) : (
+          <Link to="/auth">
+            <RiAdminFill />
+          </Link>
+        )}
       </ul>
     </nav>
   );

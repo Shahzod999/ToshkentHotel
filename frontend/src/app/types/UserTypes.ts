@@ -24,3 +24,12 @@ export interface AuthStateError {
   data: string;
   error: string;
 }
+
+export interface ProductFormInputs {
+  name: string;
+  image: FileList;
+  category: string;
+  description: string;
+  rating: number;
+  price: number;
+}

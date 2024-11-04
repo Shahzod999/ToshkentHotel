@@ -18,8 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 // для получения запросов в виде формы
 app.use(cookieParser());
 
-app.use("/auth", userRoutes);
-app.use("/product", productRoutes);
+app.use("/api/auth", userRoutes);
+app.use("/api/product", productRoutes);
 
 app.listen(port, () => console.log(`Server running on port: ${port}`));
 

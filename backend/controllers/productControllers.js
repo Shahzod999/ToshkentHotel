@@ -36,7 +36,8 @@ const addProduct = asyncHandler(async (req, res) => {
 
 const fetchProducts = asyncHandler(async (req, res) => {
   try {
-    const products = await Product.find({}).populate("category");
+    const products = await Product.find({});
+    // .populate("category");
     res.json(products);
   } catch (error) {
     console.error(error);

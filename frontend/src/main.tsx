@@ -10,6 +10,7 @@ import Facilities from "./pages/Facilities.tsx";
 import Auth from "./pages/Auth.tsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.ts";
+import Admin from "./pages/Admin.tsx";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +35,12 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/admin",
+        path: "/auth",
         element: <Auth />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
       },
     ],
   },

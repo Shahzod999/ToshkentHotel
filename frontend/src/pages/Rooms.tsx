@@ -1,6 +1,11 @@
 import RoomCardHorizontal from "../components/RoomCardHorizontal";
 import "../assets/sass/totalRooms.scss";
+import { useAllProductQuery } from "../app/api/productsApiSlice";
 const Rooms = () => {
+  const { data } = useAllProductQuery({});
+
+  console.log(data);
+
   return (
     <div className="container">
       <div className="totalRooms">
