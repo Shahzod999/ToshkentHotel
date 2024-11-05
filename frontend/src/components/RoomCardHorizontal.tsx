@@ -1,13 +1,14 @@
+import { RoomInfo } from "../app/types/UserTypes";
 import "../assets/sass/roomCard.scss";
 
-const RoomCardHorizontal = () => {
+const RoomCardHorizontal = ({ item }: { item: RoomInfo }) => {
   return (
     <div className="horizontalCard">
       <div className="horizontalCard__text">
-        <h2>Luxury redefined</h2>
-        <p>Our rooms are designed to transport you into an environment made for leisure. Take your mind off the day-to-day of home life and find a private paradise for yourself.</p>
+        <h2>{item.name}</h2>
+        <p>{item.description}</p>
         <div className="horizontalCard__buttonHolder">
-          <button className="card-button">EXPLORE</button>
+          <button className="card-button explore">EXPLORE</button>
         </div>
       </div>
 

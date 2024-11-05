@@ -13,9 +13,7 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
   const userInfo = useAppSelector(selecteduserInfo);
   const [editProduct] = useEditProductMutation();
   const [edit, setEdit] = useState(false);
-
   const [product, setProduct] = useState<RoomInfo>(item);
-
   const [deleteProduct, { isLoading, error }] = useDeleteProductMutation();
 
   const handleChange = () => {
@@ -85,7 +83,7 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
         </div>
 
         <input type="text" name="name" value={product.name} className="card-title" readOnly={!edit} onChange={handleEditChange} />
-        <input type="text" name="description" className="card-subtitle" value={product.description} readOnly={!edit} onChange={handleEditChange} />
+        <input type="text" name="description" className="card-subtitle" value={product.description.split(" ").slice(0, 2).join(" ")} readOnly={!edit} onChange={handleEditChange} />
 
         <div className="card__select-wrapper">
           <select name="category" value={product.category} onChange={handleEditChange} disabled={!edit}>
@@ -95,6 +93,7 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
             <option value="Quad room">Quad room</option>
           </select>
         </div>
+
         <div className="card-icons">
           <i>
             <FaUtensils />
@@ -109,9 +108,14 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
             <FaComments />
           </i>
         </div>
-        <button className={`card-button ${edit ? "edit" : "explore"}`} onClick={handleSendEdit}>
-          {edit ? "SAVE" : "EXPLORE"}
-        </button>
+
+        {edit ? (
+          <button className="card-button edit" onClick={handleSendEdit}>
+            SAVE
+          </button>
+        ) : (
+          <button className="card-button explore">EXPLORE</button>
+        )}
       </div>
     </div>
   );

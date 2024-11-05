@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 5px;
-  h2 {
+  > h2 {
     grid-column: span 3;
     margin-top: 50px;
     font-family: var(--second-family);

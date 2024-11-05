@@ -1,33 +1,28 @@
 import RoomCardHorizontal from "../components/RoomCardHorizontal";
 import "../assets/sass/totalRooms.scss";
+import { useAllProductQuery } from "../app/api/productsApiSlice";
+
 const Rooms = () => {
+  const { data } = useAllProductQuery({});
+
+  const categories = ["Single room", "Double room", "Triple room", "Quad room"];
 
   return (
     <div className="container">
-      <div className="totalRooms">
-        <h2> Single room </h2>
-        <RoomCardHorizontal />
-        <RoomCardHorizontal />
-        <RoomCardHorizontal />
-      </div>
-      <div className="totalRooms">
-        <h2> Double room </h2>
-        <RoomCardHorizontal />
-        <RoomCardHorizontal />
-        <RoomCardHorizontal />
-      </div>
-      <div className="totalRooms">
-        <h2> Triple Room </h2>
-        <RoomCardHorizontal />
-        <RoomCardHorizontal />
-        <RoomCardHorizontal />
-      </div>
-      <div className="totalRooms">
-        <h2> Quad Room </h2>
-        <RoomCardHorizontal />
-        <RoomCardHorizontal />
-        <RoomCardHorizontal />
-      </div>
+      {categories.map((category) => {
+        const rooms = data?.filter((item) => item.category === category);
+        if (rooms?.length == 0) {
+          return;
+        }
+        return (
+          <div className="totalRooms" key={category}>
+            <h2>{category}</h2>
+            {rooms?.map((item) => (
+              <RoomCardHorizontal key={item._id} item={item} />
+            ))}
+          </div>
+        );
+      })}
     </div>
   );
 };

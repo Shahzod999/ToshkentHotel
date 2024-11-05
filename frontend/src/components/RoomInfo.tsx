@@ -20,8 +20,9 @@ const RoomInfo = () => {
 
       <Testimonials />
 
-      <RoomCardHorizontal />
-      <RoomCardHorizontal />
+      {data?.slice(0, 2).map((item) => (
+        <RoomCardHorizontal item={item} />
+      ))}
     </>
   );
 };
