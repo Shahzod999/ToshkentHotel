@@ -38,11 +38,12 @@ const Admin = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Name:</label>
         <input type="text" {...register("name", { required: "Name is required" })} />
-        {errors.name && <p>{errors.name.message}</p>}
+        <span className="errorText">{errors.name && <p>{errors.name.message}</p>}</span>
 
         <label>Image:</label>
         <input type="text" {...register("image", { required: "Image is required" })} />
-        {errors.image && <p>{errors.image.message}</p>}
+
+        <span className="errorText">{errors.image && <p>{errors.image.message}</p>} </span>
 
         <label>Category:</label>
         <select {...register("category", { required: "Category is required" })} value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -51,11 +52,11 @@ const Admin = () => {
           <option value="Triple room">Triple room</option>
           <option value="Quad room">Quad room</option>
         </select>
-        {errors.category && <p>{errors.category.message}</p>}
+        <span className="errorText">{errors.category && <p>{errors.category.message}</p>} </span>
 
         <label>Description:</label>
         <textarea {...register("description", { required: "Description is required" })} />
-        {errors.description && <p>{errors.description.message}</p>}
+        <span className="errorText">{errors.description && <p>{errors.description.message}</p>} </span>
 
         <label>Rating:</label>
         <input
@@ -67,19 +68,18 @@ const Admin = () => {
           })}
           step="0.1"
         />
-        {errors.rating && <p>{errors.rating.message}</p>}
+        <span className="errorText">{errors.rating && <p>{errors.rating.message}</p>}</span>
 
         <label>Price:</label>
         <input
           type="number"
-          {...register("rating", {
-            required: "Rating is required",
-            min: { value: 0, message: "Minimum rating is 0" },
-            max: { value: 5, message: "Maximum rating is 5" },
+          {...register("price", {
+            required: "Price is required",
+            min: { value: 0, message: "Price must be positive" },
           })}
           step="0.1"
         />
-        {errors.price && <p>{errors.price.message}</p>}
+        <span className="errorText">{errors.price && <p>{errors.price.message}</p>} </span>
 
         <button type="submit">Add Product</button>
       </form>

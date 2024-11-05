@@ -54,9 +54,11 @@ const Navigation = () => {
             </li>
           </>
         ) : (
-          <Link to="/auth">
-            <RiAdminFill />
-          </Link>
+          <li>
+            <Link to="/auth">
+              <RiAdminFill />
+            </Link>
+          </li>
         )}
       </ul>
     </nav>

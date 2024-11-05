@@ -33,3 +33,17 @@ export interface ProductFormInputs {
   rating: number;
   price: number;
 }
+
+
+export interface RoomInfo {
+  _id: string
+  name: string
+  image: string
+  category: string
+  description: string
+  rating: number
+  price: number
+  createdAt: string
+  updatedAt: string
+  __v: number
+}

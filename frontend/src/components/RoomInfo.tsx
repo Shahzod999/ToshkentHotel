@@ -4,29 +4,18 @@ import RoomCard from "./RoomCard";
 import Testimonials from "./Testimonials";
 import RoomCardHorizontal from "./RoomCardHorizontal";
 import SwiperMain from "./SwiperMain";
-
+import { useAllProductQuery } from "../app/api/productsApiSlice";
 const RoomInfo = () => {
+  const { data } = useAllProductQuery({});
+
   return (
     <>
       <SwiperMain>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <RoomCard />
-        </SwiperSlide>
+        {data?.map((item) => (
+          <SwiperSlide key={item._id}>
+            <RoomCard item={item} />
+          </SwiperSlide>
+        ))}
       </SwiperMain>
 
       <Testimonials />

@@ -4,6 +4,39 @@
   border-radius: 8px;
   overflow: hidden;
   transition: 0.3s;
+  position: relative;
+  font-family: var(--third-family);
+  &__select-wrapper {
+    select {
+      width: 100%;
+      padding: 10px 0; /* Оставляем место для иконки */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+    }
+  }
+
+  input {
+    border: none;
+    padding: 5px 0;
+    outline: none;
+  }
+  &__function {
+    display: flex;
+    position: absolute;
+    top: 0;
+    font-size: 35px;
+    justify-content: space-between;
+    width: 100%;
+    &__icon {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 5px;
+      width: 45px;
+      height: 45px;
+      border-radius: 5px;
+    }
+  }
 
   &:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -18,6 +51,10 @@
   &-content {
     padding: 16px;
     background-color: white;
+  }
+  &-category {
+    font-size: 1em;
+    font-family: var(--font-family);
   }
 
   &-title {
@@ -37,18 +74,21 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    div {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
   }
 
   .rating {
-    display: flex;
-    align-items: center;
-    gap: 4px;
     font-weight: bold;
+    width: 50px;
   }
 
   .price {
-    font-size: 1.2em;
     font-weight: bold;
+    width: 50px;
   }
 
   &-icons {
@@ -131,7 +171,6 @@
   display: block;
   width: 100%;
   padding: 12px;
-  background-color: #e0b973;
   color: #fff;
   text-align: center;
   border: none;
@@ -143,12 +182,26 @@
   margin-top: 16px;
   text-transform: uppercase;
 
-  &:hover {
-    background-color: #d0a85e;
-    transform: scale(1.01);
+  &.explore {
+    background-color: #e0b973;
+    &:hover {
+      background-color: #d0a85e;
+      transform: scale(1.01);
+    }
+    &:active {
+      background-color: #c69b4b;
+      transform: scale(1);
+    }
   }
-  &:active {
-    background-color: #c69b4b;
-    transform: scale(1);
+  &.edit {
+    background-color: #73e0a0;
+    &:hover {
+      background-color: #50bf7e;
+      transform: scale(1.01);
+    }
+    &:active {
+      background-color: #3eb26e;
+      transform: scale(1);
+    }
   }
 }
