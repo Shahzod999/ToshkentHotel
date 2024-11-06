@@ -16,7 +16,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://toshkent-hotel.vercel.app", "*"],
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
