@@ -18,6 +18,11 @@ export interface ErrorState {
   error?: string;
 }
 
+export interface ErrorStateRoomAdd {
+  status: string;
+  data: string;
+}
+
 export interface AuthStateError {
   status: string;
   originalStatus: number;
@@ -32,6 +37,7 @@ export interface ProductFormInputs {
   description: string;
   rating: number;
   price: number;
+  mainRoom: boolean;
 }
 
 
@@ -46,4 +52,5 @@ export interface RoomInfo {
   createdAt: string
   updatedAt: string
   __v: number
+  mainRoom: string
 }

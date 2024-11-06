@@ -3,7 +3,11 @@ import Product from "../models/productModel.js";
 
 const addProduct = asyncHandler(async (req, res) => {
   try {
-    const { name, image, category, description, rating, price } = req.fields;
+    const { name, image, category, description, rating, price, mainRoom } = req.fields;
+
+    // const isMainRoom = mainRoom === "true";
+
+    // console.log(isMainRoom);
 
     switch (true) {
       case !name:

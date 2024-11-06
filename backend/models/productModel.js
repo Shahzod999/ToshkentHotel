@@ -10,6 +10,7 @@ const productSchema = mongoose.Schema(
     description: { type: String, required: true },
     rating: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
+    mainRoom: { type: Boolean, required: false, default: false },
   },
   { timestamps: true }
 );

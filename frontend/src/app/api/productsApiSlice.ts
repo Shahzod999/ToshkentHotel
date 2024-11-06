@@ -1,9 +1,9 @@
-import { RoomInfo } from "../types/UserTypes";
+import { ErrorStateRoomAdd, RoomInfo } from "../types/UserTypes";
 import { apiSlice } from "./apiSlice";
 
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    allProduct: builder.query<RoomInfo[], {}>({
+    allProduct: builder.query<RoomInfo[], void>({
       query: () => "/product",
       providesTags: ["Product"],
     }),

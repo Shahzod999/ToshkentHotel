@@ -20,6 +20,12 @@
     flex-direction: column;
     gap: 15px;
 
+    .mainRoomCheck {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     label {
       font-family: var(--font-family);
       font-weight: bold;

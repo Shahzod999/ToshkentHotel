@@ -3,7 +3,7 @@ import "../assets/sass/totalRooms.scss";
 import { useAllProductQuery } from "../app/api/productsApiSlice";
 
 const Rooms = () => {
-  const { data } = useAllProductQuery({});
+  const { data } = useAllProductQuery();
 
   const categories = ["Single room", "Double room", "Triple room", "Quad room"];
 

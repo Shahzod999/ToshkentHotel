@@ -6,7 +6,7 @@ import RoomCardHorizontal from "./RoomCardHorizontal";
 import SwiperMain from "./SwiperMain";
 import { useAllProductQuery } from "../app/api/productsApiSlice";
 const RoomInfo = () => {
-  const { data } = useAllProductQuery({});
+  const { data } = useAllProductQuery();
 
   return (
     <>
@@ -20,9 +20,11 @@ const RoomInfo = () => {
 
       <Testimonials />
 
-      {data?.slice(0, 2).map((item) => (
-        <RoomCardHorizontal item={item} />
-      ))}
+      {data?.map((item) => {
+        if (item.mainRoom) {
+          return <RoomCardHorizontal item={item} />;
+        }
+      })}
     </>
   );
 };
