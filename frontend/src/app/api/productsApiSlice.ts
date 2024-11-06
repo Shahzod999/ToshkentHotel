@@ -1,4 +1,4 @@
-import { ErrorStateRoomAdd, RoomInfo } from "../types/UserTypes";
+import { RoomInfo } from "../types/UserTypes";
 import { apiSlice } from "./apiSlice";
 
 export const productsApiSlice = apiSlice.injectEndpoints({

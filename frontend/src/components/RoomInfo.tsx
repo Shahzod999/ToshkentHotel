@@ -5,8 +5,13 @@ import Testimonials from "./Testimonials";
 import RoomCardHorizontal from "./RoomCardHorizontal";
 import SwiperMain from "./SwiperMain";
 import { useAllProductQuery } from "../app/api/productsApiSlice";
+import Loading from "./Loading";
 const RoomInfo = () => {
-  const { data } = useAllProductQuery();
+  const { data, isLoading } = useAllProductQuery();
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -22,7 +27,7 @@ const RoomInfo = () => {
 
       {data?.map((item) => {
         if (item.mainRoom) {
-          return <RoomCardHorizontal item={item} />;
+          return <RoomCardHorizontal item={item} key={item._id} />;
         }
       })}
     </>

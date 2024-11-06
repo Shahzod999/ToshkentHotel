@@ -4,6 +4,7 @@ import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -12,6 +13,14 @@ const port = process.env.PORT || 5001;
 connectDB();
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+); // снова забыл
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
