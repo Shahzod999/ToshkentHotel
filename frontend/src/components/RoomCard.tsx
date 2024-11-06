@@ -22,7 +22,7 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
 
   const handleDelete = async () => {
     try {
-      let answer = window.confirm("Are u sure u want to delete this product?");
+      const answer = window.confirm("Are u sure u want to delete this product?");
       if (!answer) return;
       const { data } = await deleteProduct(item._id).unwrap();
       console.log(data);
