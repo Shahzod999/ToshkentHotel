@@ -14,9 +14,11 @@ connectDB();
 
 const app = express();
 
+const allowedOrigins = ["https://toshkent-hotel.vercel.app", "http://localhost:5173"];
+
 app.use(
   cors({
-    origin: "https://toshkent-hotel.vercel.app",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
