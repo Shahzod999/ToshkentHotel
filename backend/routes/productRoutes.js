@@ -1,6 +1,5 @@
 import express from "express";
 import formidable from "express-formidable";
-// для получения запросов в виде формы
 import { fetchProducts, addProduct, removeProduct, updateProduct } from "../controllers/productControllers.js";
 
 const router = express.Router();

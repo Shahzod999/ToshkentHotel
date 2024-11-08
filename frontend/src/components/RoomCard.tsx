@@ -8,10 +8,12 @@ import { MdRestoreFromTrash } from "react-icons/md";
 import { BsPenFill } from "react-icons/bs";
 import { useDeleteProductMutation, useEditProductMutation } from "../app/api/productsApiSlice";
 import { useState } from "react";
+import { BsFileEarmarkImageFill } from "react-icons/bs";
+import Loading from "./Loading";
 
 const RoomCard = ({ item }: { item: RoomInfo }) => {
   const userInfo = useAppSelector(selecteduserInfo);
-  const [editProduct] = useEditProductMutation();
+  const [editProduct, { isLoading: updateLoading }] = useEditProductMutation();
   const [edit, setEdit] = useState(false);
   const [product, setProduct] = useState<RoomInfo>(item);
   const [deleteProduct, { isLoading, error }] = useDeleteProductMutation();
@@ -46,17 +48,30 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
       for (const key in product) {
         formData.append(key, product[key as keyof RoomInfo]?.toString() || "");
       }
-
       const { data } = await editProduct({ id: product._id, formData });
-      if (data.error) {
-        console.log(error);
-      } else {
-        console.log(data);
-        alert("Nice");
-        setEdit(false);
-      }
-    } catch (error) {
-      console.log(error);
+
+      alert("Nice");
+      setEdit(false);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  console.log(updateLoading);
+
+  const handleImagePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setProduct({ ...product, image: reader.result as string });
+        console.log(reader.result);
+      };
+      reader.onerror = (error) => {
+        console.log("Error: ", error);
+      };
     }
   };
 
@@ -69,7 +84,34 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
           <BsPenFill className="cursor card__function__icon" onClick={handleChange} />
         </div>
       )}
-      <img src="./room.png" alt="Hotel Room" />
+
+      <div className="card-img">
+        {updateLoading && (
+          <div className="handleImage">
+            <Loading />
+          </div>
+        )}
+
+        {edit && !updateLoading && (
+          <div className="handleImage">
+            <label htmlFor="imagePreview" className="cursor">
+              <BsFileEarmarkImageFill size={50} />
+            </label>
+            <input
+              accept="image/*"
+              type="file"
+              id="imagePreview"
+              style={{ display: "none" }}
+              onChange={(e) => {
+                handleImagePreview(e);
+              }}
+            />
+          </div>
+        )}
+
+        <img src={product.image} alt="Hotel Room" />
+      </div>
+
       <div className="card-content">
         <div className="card-info">
           <div>
@@ -110,7 +152,7 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
         </div>
 
         {edit ? (
-          <button className="card-button edit" onClick={handleSendEdit}>
+          <button className="card-button edit" disabled={updateLoading} onClick={handleSendEdit}>
             SAVE
           </button>
         ) : (

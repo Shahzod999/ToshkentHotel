@@ -16,8 +16,6 @@ const Header = () => {
     setHeaderImg("header.png");
   }, [pathname]);
 
-  console.log(headerImg);
-
   if (pathname == "/contact")
     return (
       <header style={{ background: "#14274a" }}>

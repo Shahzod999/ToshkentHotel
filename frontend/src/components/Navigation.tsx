@@ -10,8 +10,6 @@ const Navigation = () => {
   const userInfo = useAppSelector(selecteduserInfo);
   const [logOut] = useLogOutMutation();
 
-  console.log(userInfo, "212");
-
   const handleLogout = async () => {
     try {
       await logOut({}).unwrap();

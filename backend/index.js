@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import facilitiesRoutes from "./routes/facilitiesRoutes.js";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
 import cors from "cors";
@@ -31,6 +32,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", userRoutes);
 app.use("/api/product", productRoutes);
+app.use("/api/facilities", facilitiesRoutes);
 
 app.listen(port, () => console.log(`Server running on port: ${port}`));
 

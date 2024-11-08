@@ -13,7 +13,7 @@ const RoomCardHorizontal = ({ item }: { item: RoomInfo }) => {
       </div>
 
       <div className="horizontalCard__imageHolder">
-        <img src="room.png" alt="room" />
+        <img src={item.image} alt="room" />
       </div>
     </div>
   );

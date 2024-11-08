@@ -6,12 +6,28 @@
   transition: 0.3s;
   position: relative;
   font-family: var(--third-family);
+  display: flex;
+  flex-direction: column;
+
+  &-img {
+    flex: 1;
+    position: relative;
+    .handleImage {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: grid;
+      place-content: center;
+      background-color: #ffffff47;
+    }
+  }
 
   &__select-wrapper {
     select {
       width: 100%;
       padding: 10px 0;
-      /* Оставляем место для иконки */
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -38,6 +54,7 @@
     font-size: 35px;
     justify-content: space-between;
     width: 100%;
+    z-index: 2;
 
     &__icon {
       background-color: rgba(255, 255, 255, 0.9);
@@ -59,6 +76,7 @@
   }
 
   &-content {
+    flex: 1;
     padding: 16px;
     background-color: white;
   }
@@ -124,7 +142,7 @@
 .horizontalCard {
   display: flex;
   flex-wrap: wrap;
-  gap: 80px;
+  gap: 5px;
   padding: 50px;
   margin: 50px 0;
   position: relative;
@@ -167,7 +185,7 @@
     flex: 1;
     padding: 1rem;
 
-    >h2 {
+    > h2 {
       font-family: var(--second-family);
       font-weight: 700;
       font-size: 40px;
@@ -175,7 +193,7 @@
       color: #14274a;
     }
 
-    >p {
+    > p {
       font-family: var(--font-family);
       font-size: 20px;
       line-height: 160%;

@@ -14,11 +14,13 @@ const Admin = () => {
   const [category, setCategory] = useState<string>("Single room");
   const [commonError, setCommonError] = useState("");
 
+  const [imagePreview, setImagePreview] = useState<string>("");
+
   const onSubmit: SubmitHandler<ProductFormInputs> = async (data) => {
     setCommonError("");
     const formData = new FormData();
     formData.append("name", data.name);
-    formData.append("image", data.image[0]);
+    formData.append("image", imagePreview);
     formData.append("category", data.category);
     formData.append("description", data.description);
     formData.append("rating", data.rating.toString());
@@ -29,13 +31,27 @@ const Admin = () => {
       const response = await addProducts(formData).unwrap();
       console.log(response);
       alert("Product added successfully");
+      setImagePreview("");
     } catch (error) {
       console.error(error);
       setCommonError((error as ErrorStateRoomAdd).data);
     }
   };
 
-  console.log(commonError);
+  const handleImagePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setImagePreview(reader.result as string);
+        console.log(reader.result);
+      };
+      reader.onerror = (error) => {
+        console.log("Error: ", error);
+      };
+    }
+  };
 
   return (
     <div className="admin-container">
@@ -46,7 +62,15 @@ const Admin = () => {
         <span className="errorText">{errors.name?.message}</span>
 
         <label>Image:</label>
-        <input type="text" {...register("image", { required: "Image is required" })} />
+        {imagePreview && <img src={imagePreview} alt="Preview" />}
+        <input
+          accept="image/*"
+          type="file"
+          {...register("image", { required: "Image is required" })}
+          onChange={(e) => {
+            handleImagePreview(e);
+          }}
+        />
 
         <span className="errorText">{errors.image?.message} </span>
 
