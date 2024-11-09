@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import "../assets/sass/admin.scss";
 import { useAddProductsMutation } from "../app/api/productsApiSlice";
 import { ErrorStateRoomAdd, ProductFormInputs } from "../app/types/UserTypes";
@@ -16,7 +16,7 @@ const Admin = () => {
 
   const [imagePreview, setImagePreview] = useState<string>("");
 
-  const onSubmit: SubmitHandler<ProductFormInputs> = async (data) => {
+  const onSubmit = async (data: ProductFormInputs) => {
     setCommonError("");
     const formData = new FormData();
     formData.append("name", data.name);

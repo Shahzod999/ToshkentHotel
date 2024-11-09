@@ -3,14 +3,14 @@ import Facilities from "../models/facilitiesModel.js";
 
 const addFacilities = asyncHandler(async (req, res) => {
   try {
-    const { text, img } = req.body;
+    const { text, img } = req.fields;
 
     if (!text || !img) return res.status(400).json("All fields required");
 
     const existingFacilities = await Facilities.findOne({ text });
     if (existingFacilities) return res.status(409).json("same Facilitie exists");
 
-    const facilities = new Facilities({ ...req.body });
+    const facilities = new Facilities({ ...req.fields });
     await facilities.save();
     res.status(201).json(facilities);
   } catch (error) {
@@ -18,6 +18,7 @@ const addFacilities = asyncHandler(async (req, res) => {
     res.status(400).json(error.message);
   }
 });
+
 const fetchFacilities = asyncHandler(async (req, res) => {
   try {
     const facilities = await Facilities.find({});
@@ -39,12 +40,13 @@ const removeFacilities = asyncHandler(async (req, res) => {
     res.status(500).json({ error: "server error" });
   }
 });
+
 const updateFacilities = asyncHandler(async (req, res) => {
   try {
-    const { text, img } = req.body;
+    const { text, img } = req.fields;
     if (!text || !img) return res.status(400).json("All fields required");
 
-    const facilities = await Facilities.findByIdAndUpdate(req.params.id, { ...req.body }, { new: true });
+    const facilities = await Facilities.findByIdAndUpdate(req.params.id, { ...req.fields }, { new: true });
 
     if (!facilities) return res.status(404).json("Product not found");
     await facilities.save();

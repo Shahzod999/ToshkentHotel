@@ -7,40 +7,13 @@ import "../assets/sass/facilities.scss";
 import FacilitiesCard from "../components/FacilitiesCard";
 import { useAddFacilitiesMutation, useAllFacilitiesQuery } from "../app/api/facilitiesApiSlice";
 import { ErrorStateRoomAdd } from "../app/types/UserTypes";
+import Loading from "../components/Loading";
+import ClearButton from "../components/ClearButton";
 
 const Facilities = () => {
   const userInfo = useAppSelector(selecteduserInfo);
-  const { data: fasilitiesData, isLoading } = useAllFacilitiesQuery({});
-  const [addFacilities, { data: addFacilitiesData }] = useAddFacilitiesMutation();
-
-  console.log(fasilitiesData);
-
-  const facilities = [
-    {
-      img: "q1.png",
-      text: "THE GYM",
-    },
-    {
-      img: "q2.png",
-      text: "POOLSIDE BAR",
-    },
-    {
-      img: "q3.png",
-      text: "THE SPA",
-    },
-    {
-      img: "q4.png",
-      text: "SWIMMING POOL",
-    },
-    {
-      img: "q5.png",
-      text: "RESTAURANT",
-    },
-    {
-      img: "q6.png",
-      text: "LAUNDRY",
-    },
-  ];
+  const { data: facilities, isLoading, isFetching } = useAllFacilitiesQuery();
+  const [addFacilities, { isLoading: addFacilitiLoading }] = useAddFacilitiesMutation();
 
   const [newFacility, setNewFacility] = useState({ img: "", text: "" });
   const [commonError, setCommonError] = useState("");
@@ -52,8 +25,12 @@ const Facilities = () => {
       return alert("All fields are required");
     }
 
+    const formData = new FormData();
+    formData.append("img", img);
+    formData.append("text", text);
+
     try {
-      const res = await addFacilities(newFacility).unwrap();
+      const res = await addFacilities(formData).unwrap();
       console.log(res);
       setNewFacility({ img: "", text: "" });
       setCommonError("");
@@ -65,7 +42,13 @@ const Facilities = () => {
 
   const handleImagePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
+
     if (file) {
+      if (file.size > 1 * 1024 * 1024) {
+        alert("Please upload an image that is 1MB or smaller.");
+        return;
+      }
+
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -77,8 +60,7 @@ const Facilities = () => {
     }
   };
 
-  console.log(newFacility);
-
+  if (isLoading) return <Loading />;
   return (
     <div className="facilities container">
       <h2> FACILITIES </h2>
@@ -89,11 +71,21 @@ const Facilities = () => {
 
       {userInfo && (
         <div className="facility-form">
+          {(newFacility.img || newFacility.text) && (
+              <ClearButton setState={setNewFacility} clearItem={{ img: "", text: "" }} />
+          )}
           <h4 className="facility-form__title">Add New Facility</h4>
-          <label htmlFor="img" className="facility-form__input">
-            <span>Enter image URL</span> <BsFileEarmarkImageFill size={25} />
-          </label>
-
+          {addFacilitiLoading ? (
+            <Loading />
+          ) : (
+            <label htmlFor="img" className="facility-form__input">
+              <span>Enter image URL</span> <BsFileEarmarkImageFill size={25} />
+              <div className="facility-form-newImg">
+                <img src={newFacility.img} alt="foto" />
+              </div>
+            </label>
+          )}
+          <span className="errorText">{commonError}</span>
           <input
             accept="image/*"
             type="file"
@@ -107,14 +99,16 @@ const Facilities = () => {
           <label htmlFor="text">Enter facility description</label>
           <input type="text" id="text" value={newFacility.text} onChange={(e) => setNewFacility({ ...newFacility, text: e.target.value })} className="facility-form__input" />
 
-          <button onClick={handleAddFacility} className="facility-form__button">
+          <button onClick={handleAddFacility} className="facility-form__button" disabled={addFacilitiLoading}>
             Add Facility
           </button>
         </div>
       )}
 
+      {isFetching && <Loading />}
+
       <div className="facilitiesHolder">
-        {facilities.map((item) => (
+        {facilities?.map((item) => (
           <FacilitiesCard item={item} userInfo={userInfo} key={item.text} />
         ))}
       </div>

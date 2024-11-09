@@ -10,6 +10,7 @@ import { useDeleteProductMutation, useEditProductMutation } from "../app/api/pro
 import { useState } from "react";
 import { BsFileEarmarkImageFill } from "react-icons/bs";
 import Loading from "./Loading";
+import ClearButton from "./ClearButton";
 
 const RoomCard = ({ item }: { item: RoomInfo }) => {
   const userInfo = useAppSelector(selecteduserInfo);
@@ -58,11 +59,14 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
     }
   };
 
-  console.log(updateLoading);
-
   const handleImagePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
+
     if (file) {
+      if (file.size > 1 * 1024 * 1024) {
+        alert("Please upload an image that is 1MB or smaller.");
+        return;
+      }
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -79,7 +83,7 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
     <div className="card">
       {userInfo && (
         <div className="card__function">
-          <MdRestoreFromTrash className="cursor card__function__icon" onClick={handleDelete} />
+          {edit ? <ClearButton setState={setProduct} clearItem={item} /> : <MdRestoreFromTrash className="cursor card__function__icon" onClick={handleDelete} />}
           {isLoading && <span>Loading..</span>}
           <BsPenFill className="cursor card__function__icon" onClick={handleChange} />
         </div>

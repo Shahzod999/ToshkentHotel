@@ -54,3 +54,16 @@ export interface RoomInfo {
   __v: number
   mainRoom: string
 }
+
+export interface FacilitiesType {
+  _id: string
+  text: string
+  img: string
+  createdAt: string
+  updatedAt: string
+  __v: number
+}
+export interface editFacilitiesType {
+  text: string
+  img: string
+}

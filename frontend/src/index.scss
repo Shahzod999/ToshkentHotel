@@ -60,3 +60,26 @@ a {
   text-align: center;
   color: red;
 }
+.ClearButton {
+  display: block;
+  font-weight: 600;
+  margin: 0 5px 5px 0;
+  background-color: red;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  position: relative;
+  font-size: 17px;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 0.5px solid white;
+    border-radius: 5px;
+    margin: 3px;
+  }
+}

@@ -16,15 +16,30 @@
     margin: 80px 0;
   }
   .facilitiesHolder {
+    max-width: 60%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 100px;
-    padding: 0 150px;
     margin-bottom: 100px;
 
     &__cards {
       position: relative;
       border: 0.5px solid lightgray;
+
+      &-img {
+        position: relative;
+        .handleImage {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: grid;
+          place-content: center;
+          background-color: #ffffff47;
+        }
+      }
 
       input {
         border: none;
@@ -35,14 +50,15 @@
         transform: translateX(-50%);
         position: absolute;
         background-color: white;
-        padding: 15px 10%;
+        padding: 15px;
 
         font-family: var(--font-family);
         font-weight: 700;
-        font-size: 30px;
+        font-size: 25px;
         text-align: center;
         color: #14274a;
         z-index: 3;
+        text-transform: uppercase;
       }
 
       input:read-only {
@@ -67,6 +83,17 @@
   background-color: #f9f9f9;
   margin: 50px auto;
   font-family: var(--font-family);
+  &-newImg {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      &:not([src]),
+      &[src=""] {
+        display: none;
+      }
+    }
+  }
 
   &__title {
     font-size: 1.2rem;
@@ -112,9 +139,12 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
-
     &:hover {
       background-color: #0056b3;
+    }
+    &:disabled {
+      background-color: #333;
+      cursor: not-allowed;
     }
   }
 }

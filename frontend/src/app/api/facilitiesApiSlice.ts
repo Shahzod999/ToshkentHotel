@@ -1,12 +1,13 @@
+import { FacilitiesType, editFacilitiesType } from "../types/UserTypes";
 import { apiSlice } from "./apiSlice";
 
 export const facilitiesApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    allFacilities: builder.query({
+    allFacilities: builder.query<FacilitiesType[], void>({
       query: () => "/facilities",
       providesTags: ["Facilities"],
     }),
-    addFacilities: builder.mutation({
+    addFacilities: builder.mutation<void, FormData>({
       query: (data) => ({
         url: "/facilities",
         method: "POST",
@@ -14,14 +15,14 @@ export const facilitiesApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Facilities"],
     }),
-    deleteFacilities: builder.mutation({
+    deleteFacilities: builder.mutation<void, string>({
       query: (id) => ({
         url: `/facilities/${id}`,
         method: "DELETE"
       }),
       invalidatesTags: ["Facilities"],
     }),
-    editFacilities: builder.mutation({
+    editFacilities: builder.mutation<void, { id: string; data: FormData }>({
       query: ({ id, data }) => ({
         url: `/facilities/${id}`,
         method: "PUT",

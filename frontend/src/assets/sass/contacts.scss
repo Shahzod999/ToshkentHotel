@@ -18,6 +18,7 @@
   }
   &__card {
     display: flex;
+    flex-wrap: wrap;
     gap: 50px;
     &__text {
       flex: 1;
@@ -27,19 +28,18 @@
       a,
       h3 {
         font-family: var(--font-family);
-        font-weight: 400;
-        font-size: 20px;
         color: #14274a;
       }
       span {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-
         font-family: var(--font-family);
         font-weight: 700;
         font-size: 25px;
         color: #14274a;
+        text-align: center;
+        iframe {
+          width: 100%;
+          min-width: 350px;
+        }
       }
     }
     &__form {
@@ -54,9 +54,12 @@
           font-size: 25px;
           color: #14274a;
         }
-        input {
+        input,
+        textarea {
           padding: 15px;
+          border-radius: 5px;
         }
+
         button {
           width: fit-content;
           align-self: flex-end;
