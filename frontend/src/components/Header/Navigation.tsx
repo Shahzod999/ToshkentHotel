@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import "../assets/sass/nav.scss";
+import "../../assets/sass/nav.scss";
 import { RiAdminFill } from "react-icons/ri";
 import { GiExitDoor } from "react-icons/gi";
-import { useAppDispatch, useAppSelector } from "../app/hooks/hooks";
-import { logOutState, selecteduserInfo } from "../app/features/useInfoSlice";
-import { useLogOutMutation } from "../app/api/userApiSlice";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
+import { logOutState, selecteduserInfo } from "../../app/features/useInfoSlice";
+import { useLogOutMutation } from "../../app/api/userApiSlice";
+
 const Navigation = () => {
   const dispatch = useAppDispatch();
   const userInfo = useAppSelector(selecteduserInfo);
@@ -36,7 +37,7 @@ const Navigation = () => {
           <Link to="/rooms">Rooms</Link>
         </li>
         <li>
-          <Link to="/contact">Contact-us</Link>
+          <Link to="/contact">Contact</Link>
         </li>
         {userInfo ? (
           <>

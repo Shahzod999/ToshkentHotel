@@ -1,11 +1,11 @@
 import { SwiperSlide } from "swiper/react";
-
 import RoomCard from "./RoomCard";
-import Testimonials from "./Testimonials";
+import Testimonials from "../Testimonials";
 import RoomCardHorizontal from "./RoomCardHorizontal";
-import SwiperMain from "./SwiperMain";
-import { useAllProductQuery } from "../app/api/productsApiSlice";
-import Loading from "./Loading";
+import SwiperMain from "../SwiperMain";
+import { useAllProductQuery } from "../../app/api/productsApiSlice";
+import Loading from "../Actions/Loading";
+
 const RoomInfo = () => {
   const { data, isLoading } = useAllProductQuery();
 

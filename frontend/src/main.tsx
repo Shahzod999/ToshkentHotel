@@ -3,7 +3,7 @@ import "./index.scss";
 import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.tsx";
-import Error from "./components/Error.tsx";
+import Error from "./components/Actions/Error.tsx";
 import Rooms from "./pages/Rooms.tsx";
 import Contact from "./pages/Contact.tsx";
 import Facilities from "./pages/Facilities.tsx";

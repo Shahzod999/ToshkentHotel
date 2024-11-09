@@ -1,3 +1,4 @@
+@import "./media.scss";
 .mainHolder {
   > h2 {
     font-family: var(--font-family);
@@ -5,6 +6,10 @@
     color: #14274a;
     text-align: center;
     margin: 90px 0;
+    @include media(1600) {
+      font-size: 15px;
+      margin: 60px 0;
+    }
   }
   .roomCard {
     border: solid;

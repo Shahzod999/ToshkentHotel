@@ -2,11 +2,11 @@ import { useState } from "react";
 import { MdRestoreFromTrash } from "react-icons/md";
 import { BsPenFill } from "react-icons/bs";
 import { BsFileEarmarkImageFill } from "react-icons/bs";
-import Loading from "./Loading";
-import { useDeleteFacilitiesMutation, useEditFacilitiesMutation } from "../app/api/facilitiesApiSlice";
+import Loading from "../Actions/Loading";
+import { useDeleteFacilitiesMutation, useEditFacilitiesMutation } from "../../app/api/facilitiesApiSlice";
 import { RiSave3Fill } from "react-icons/ri";
-import { FacilitiesType } from "../app/types/UserTypes";
-import ClearButton from "./ClearButton";
+import { FacilitiesType } from "../../app/types/UserTypes";
+import ClearButton from "../Actions/ClearButton";
 
 interface FacilitiesTypes {
   item: FacilitiesType;

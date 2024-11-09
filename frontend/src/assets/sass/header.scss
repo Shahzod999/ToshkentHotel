@@ -1,3 +1,4 @@
+@import "./media.scss";
 header {
   display: flex;
   background-position: bottom;
@@ -9,12 +10,21 @@ header {
     flex: 1;
     gap: 100px;
     padding-bottom: 50px;
+    @include media(1600) {
+      gap: 80px;
+    }
+    @include media(450) {
+      gap: 10px;
+    }
     &__text {
       display: flex;
       flex-direction: column;
       justify-content: center;
       flex: 1;
       width: 40%;
+      @include media(450) {
+        width: 100%;
+      }
       .headerContactText {
         margin: 50px 0;
       }
@@ -25,12 +35,25 @@ header {
         font-family: var(--font-family);
         font-size: 45px;
         color: #fff;
+        @include media(1600) {
+          font-size: 30px;
+        }
+        @include media(450) {
+          font-size: 20px;
+        }
         span {
           font-family: var(--second-family);
           font-weight: 700;
           font-size: 100px;
           letter-spacing: 0.07em;
           color: #fff;
+          @include media(1600) {
+            font-size: 80px;
+          }
+
+          @include media(450) {
+            font-size: 40px;
+          }
         }
       }
       span {
@@ -38,6 +61,10 @@ header {
         font-size: 20px;
         letter-spacing: 0.1em;
         color: #fff;
+        margin-top: 15px;
+        @include media(450) {
+          font-size: 15px;
+        }
       }
     }
 

@@ -4,11 +4,11 @@ import { useAppSelector } from "../app/hooks/hooks";
 import { BsFileEarmarkImageFill } from "react-icons/bs";
 
 import "../assets/sass/facilities.scss";
-import FacilitiesCard from "../components/FacilitiesCard";
 import { useAddFacilitiesMutation, useAllFacilitiesQuery } from "../app/api/facilitiesApiSlice";
 import { ErrorStateRoomAdd } from "../app/types/UserTypes";
-import Loading from "../components/Loading";
-import ClearButton from "../components/ClearButton";
+import ClearButton from "../components/Actions/ClearButton";
+import Loading from "../components/Actions/Loading";
+import FacilitiesCard from "../components/Facilities/FacilitiesCard";
 
 const Facilities = () => {
   const userInfo = useAppSelector(selecteduserInfo);
@@ -71,9 +71,7 @@ const Facilities = () => {
 
       {userInfo && (
         <div className="facility-form">
-          {(newFacility.img || newFacility.text) && (
-              <ClearButton setState={setNewFacility} clearItem={{ img: "", text: "" }} />
-          )}
+          {(newFacility.img || newFacility.text) && <ClearButton setState={setNewFacility} clearItem={{ img: "", text: "" }} />}
           <h4 className="facility-form__title">Add New Facility</h4>
           {addFacilitiLoading ? (
             <Loading />

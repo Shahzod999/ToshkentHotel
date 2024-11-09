@@ -1,7 +1,7 @@
 import Navigation from "./Navigation";
 import { AiOutlineSchedule } from "react-icons/ai";
 import { RiScrollToBottomLine } from "react-icons/ri";
-import "../assets/sass/header.scss";
+import "../../assets/sass/header.scss";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 

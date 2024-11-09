@@ -1,3 +1,4 @@
+@import "./media.scss";
 footer {
   background: #14274a;
   min-height: 200px;
@@ -21,9 +22,13 @@ footer {
   }
   .footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 75px 0;
-    gap: 100px;
+    gap: 20px;
+    @include media(700) {
+      padding: 45px 0;
+    }
     > div {
       flex: 1;
     }
@@ -61,18 +66,22 @@ footer {
         font-family: var(--font-family);
         font-size: 16px;
         color: #f7f7f7;
+        @include media(1600) {
+          font-size: 12px;
+        }
       }
       form {
         display: flex;
         border: 3px solid #e0b973;
         border-radius: 10px;
         overflow: hidden;
-
+        min-width: 200px;
         input {
           outline: none;
           border: none;
           background-color: transparent;
           padding: 10px;
+          width: 100%;
 
           font-family: var(--font-family);
           color: #fff;

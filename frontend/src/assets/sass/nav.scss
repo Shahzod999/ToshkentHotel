@@ -24,7 +24,7 @@ nav {
       font-weight: 500;
     }
 
-    @include media(500) {
+    @include media(610) {
       position: absolute;
       left: 0;
       transform: translateY(-90%);
@@ -42,6 +42,9 @@ nav {
     min-width: 30%;
     flex-shrink: 0;
     padding: 45px 0;
+    @include media(610) {
+      flex: 1;
+    }
     li {
       display: flex;
       justify-content: center;
@@ -52,6 +55,11 @@ nav {
       font-weight: 500;
       font-size: 20px;
       color: #fff;
+      text-overflow: ellipsis;
+      
+      @include media(450) {
+        font-size: 15px;
+      }
       &::after {
         content: "";
         height: 3px;

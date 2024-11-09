@@ -1,7 +1,13 @@
+@import "./media.scss";
 .totalRooms {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 5px;
+  @include media(450) {
+    grid-template-columns: 1fr;
+
+    font-size: 30px;
+  }
   > h2 {
     grid-column: span 3;
     margin-top: 50px;
@@ -11,5 +17,12 @@
     letter-spacing: 0.05em;
     text-align: center;
     color: #14274a;
+    @include media(1600) {
+      font-size: 40px;
+    }
+    @include media(450) {
+      font-size: 30px;
+      grid-column: span 1;
+    }
   }
 }

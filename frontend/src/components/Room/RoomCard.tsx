@@ -1,16 +1,16 @@
 import { FaUtensils, FaDumbbell, FaGem, FaComments } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
-import "../assets/sass/roomCard.scss";
-import { RoomInfo } from "../app/types/UserTypes";
-import { useAppSelector } from "../app/hooks/hooks";
-import { selecteduserInfo } from "../app/features/useInfoSlice";
+import "../../assets/sass/roomCard.scss";
+import { RoomInfo } from "../../app/types/UserTypes";
+import { useAppSelector } from "../../app/hooks/hooks";
+import { selecteduserInfo } from "../../app/features/useInfoSlice";
 import { MdRestoreFromTrash } from "react-icons/md";
 import { BsPenFill } from "react-icons/bs";
-import { useDeleteProductMutation, useEditProductMutation } from "../app/api/productsApiSlice";
+import { useDeleteProductMutation, useEditProductMutation } from "../../app/api/productsApiSlice";
 import { useState } from "react";
 import { BsFileEarmarkImageFill } from "react-icons/bs";
-import Loading from "./Loading";
-import ClearButton from "./ClearButton";
+import Loading from "../Actions/Loading";
+import ClearButton from "../Actions/ClearButton";
 
 const RoomCard = ({ item }: { item: RoomInfo }) => {
   const userInfo = useAppSelector(selecteduserInfo);

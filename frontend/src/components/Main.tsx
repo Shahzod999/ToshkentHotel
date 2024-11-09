@@ -1,5 +1,5 @@
 import "../assets/sass/main.scss";
-import RoomInfo from "./RoomInfo";
+import RoomInfo from "./Room/RoomInfo";
 
 const Main = () => {
   return (

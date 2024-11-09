@@ -1,5 +1,5 @@
-import { RoomInfo } from "../app/types/UserTypes";
-import "../assets/sass/roomCard.scss";
+import { RoomInfo } from "../../app/types/UserTypes";
+import "../../assets/sass/roomCard.scss";
 
 const RoomCardHorizontal = ({ item }: { item: RoomInfo }) => {
   return (

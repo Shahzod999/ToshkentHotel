@@ -1,5 +1,13 @@
+@import "./media.scss";
+
 .contacts {
   padding: 250px 0;
+  @include media(1600) {
+    padding: 150px 0;
+  }
+  @include media(450) {
+    padding: 50px 0;
+  }
   &__text {
     margin-bottom: 150px;
 
@@ -9,11 +17,29 @@
       font-size: 50px;
       color: #14274a;
       margin-bottom: 25px;
+      @include media(1600) {
+        font-size: 40px;
+      }
+      @include media(450) {
+        font-size: 30px;
+      }
     }
     p {
       font-family: var(--font-family);
       font-size: 25px;
       color: #14274a;
+      @include media(1600) {
+        font-size: 20px;
+      }
+      @include media(450) {
+        font-size: 15px;
+      }
+    }
+    @include media(1600) {
+      margin-bottom: 100px;
+    }
+    @include media(450) {
+      margin-bottom: 50px;
     }
   }
   &__card {
@@ -25,6 +51,14 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
+      width: 100%;
+      min-width: 350px;
+      @include media(1600) {
+        min-width: 300px;
+      }
+      @include media(450) {
+        min-width: 250px;
+      }
       a,
       h3 {
         font-family: var(--font-family);
@@ -38,7 +72,6 @@
         text-align: center;
         iframe {
           width: 100%;
-          min-width: 350px;
         }
       }
     }
@@ -48,16 +81,34 @@
         display: flex;
         flex-direction: column;
         gap: 25px;
+        @include media(1600) {
+          gap: 20px;
+        }
+        @include media(450) {
+          gap: 15px;
+        }
         label {
           font-family: var(--third-family);
           font-weight: 400;
           font-size: 25px;
           color: #14274a;
+          @include media(1600) {
+            font-size: 20px;
+          }
+          @include media(450) {
+            font-size: 15px;
+          }
         }
         input,
         textarea {
           padding: 15px;
           border-radius: 5px;
+          @include media(1600) {
+            padding: 11px;
+          }
+          @include media(450) {
+            padding: 8px;
+          }
         }
 
         button {
@@ -71,6 +122,14 @@
           background-color: #e0b973;
           border-radius: 10px;
           border: none;
+          @include media(1600) {
+            padding: 21px;
+            font-size: 20px;
+          }
+          @include media(450) {
+            padding: 17px;
+            font-size: 17px;
+          }
         }
       }
     }

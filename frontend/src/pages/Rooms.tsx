@@ -1,4 +1,4 @@
-import RoomCardHorizontal from "../components/RoomCardHorizontal";
+import RoomCardHorizontal from "../components/Room/RoomCardHorizontal";
 import "../assets/sass/totalRooms.scss";
 import { useAllProductQuery } from "../app/api/productsApiSlice";
 

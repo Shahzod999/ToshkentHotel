@@ -1,3 +1,4 @@
+@import "./media.scss";
 .swiper {
   width: 100%;
   padding-top: 50px;
@@ -9,6 +10,9 @@
   background-size: cover;
   width: 300px;
   height: fit-content;
+  @include media(450) {
+    width: 200px;
+  }
 }
 
 .swiper-slide img {
