@@ -1,4 +1,4 @@
-import { FacilitiesType, editFacilitiesType } from "../types/UserTypes";
+import { FacilitiesType } from "../types/UserTypes";
 import { apiSlice } from "./apiSlice";
 
 export const facilitiesApiSlice = apiSlice.injectEndpoints({
