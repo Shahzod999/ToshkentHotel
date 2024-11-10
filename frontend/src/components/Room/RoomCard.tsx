@@ -11,6 +11,7 @@ import { useState } from "react";
 import { BsFileEarmarkImageFill } from "react-icons/bs";
 import Loading from "../Actions/Loading";
 import ClearButton from "../Actions/ClearButton";
+import { Link } from "react-router-dom";
 
 const RoomCard = ({ item }: { item: RoomInfo }) => {
   const userInfo = useAppSelector(selecteduserInfo);
@@ -160,7 +161,9 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
             SAVE
           </button>
         ) : (
-          <button className="card-button explore">EXPLORE</button>
+          <button className="card-button explore">
+            <Link to={product._id}>EXPLORE</Link>
+          </button>
         )}
       </div>
     </div>

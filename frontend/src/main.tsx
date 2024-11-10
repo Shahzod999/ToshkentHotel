@@ -11,6 +11,7 @@ import Auth from "./pages/Auth.tsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.ts";
 import Admin from "./pages/Admin.tsx";
+import SinglePage from "./pages/SinglePage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         element: <Admin />,
+      },
+      {
+        path: "/:id",
+        element: <SinglePage />,
       },
     ],
   },

@@ -3,19 +3,37 @@ footer {
   background: #14274a;
   min-height: 200px;
   color: white;
+  position: relative;
   .arrow {
     display: flex;
-    background-color: white;
+    position: absolute;
+    z-index: 9;
+    top: -40px;
+    left: 0;
+    width: 100%;
 
     div {
       min-height: 40px;
       flex: 1;
+      position: relative;
+      background: transparent;
     }
-    div:first-child {
+
+    div:first-child::before,
+    div:last-child::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+    }
+
+    div:first-child::before {
       clip-path: polygon(80% 110%, 110% 110%, 100% 0);
       background-color: #14274a;
     }
-    div:last-child {
+
+    div:last-child::before {
       clip-path: polygon(0% 0%, 20% 110%, 0 110%);
       background-color: #14274a;
     }

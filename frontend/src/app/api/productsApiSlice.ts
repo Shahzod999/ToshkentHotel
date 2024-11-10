@@ -29,8 +29,13 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         body: formData
       }),
       invalidatesTags: ["Product"],
+    }),
+    getSingleProduct: builder.query({
+      query: (id) => ({
+        url: `/product/${id}`,
+      })
     })
   })
 })
 
-export const { useAllProductQuery, useAddProductsMutation, useDeleteProductMutation, useEditProductMutation } = productsApiSlice
+export const { useAllProductQuery, useAddProductsMutation, useDeleteProductMutation, useEditProductMutation, useGetSingleProductQuery } = productsApiSlice

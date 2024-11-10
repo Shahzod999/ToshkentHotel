@@ -3,7 +3,7 @@ import { AiOutlineSchedule } from "react-icons/ai";
 import { RiScrollToBottomLine } from "react-icons/ri";
 import "../../assets/sass/header.scss";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -44,13 +44,19 @@ const Header = () => {
 
         <button className="cursor">
           <AiOutlineSchedule />
-          <span>BOOK NOW</span>
+          <Link to="/contact">
+            <span>BOOK NOW</span>
+          </Link>
         </button>
 
-        <div className="scroll cursor">
-          <span>Scroll</span>
-          <RiScrollToBottomLine size={50} />
-        </div>
+        <a href="#main" className="scroll cursor">
+          {pathname == "/" && (
+            <>
+              <span>Scroll</span>
+              <RiScrollToBottomLine size={50} />
+            </>
+          )}
+        </a>
       </div>
     </header>
   );

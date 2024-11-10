@@ -39,7 +39,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border: 0.5px solid rgb(213, 213, 213);
+    border: 0.5px solid rgb(33, 33, 33);
     border-radius: 5px;
     padding: 45px;
     color: white;
@@ -47,6 +47,7 @@
     position: relative;
     overflow: hidden;
     font-family: var(--third-family);
+    min-width: 300px;
 
     label {
       font-weight: 500;
