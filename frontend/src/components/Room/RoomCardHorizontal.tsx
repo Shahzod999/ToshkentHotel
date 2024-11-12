@@ -9,9 +9,9 @@ const RoomCardHorizontal = ({ item }: { item: RoomInfo }) => {
         <h2>{item.name}</h2>
         <p>{item.description}</p>
         <div className="horizontalCard__buttonHolder">
-          <button className="card-button explore">
-            <Link to={item._id}>EXPLORE</Link>
-          </button>
+          <Link to={item._id} className="card-button explore">
+            EXPLORE
+          </Link>
         </div>
       </div>
 

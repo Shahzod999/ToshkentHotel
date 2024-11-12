@@ -164,9 +164,9 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
             SAVE
           </button>
         ) : (
-          <button className="card-button explore">
-            <Link to={product._id}>EXPLORE</Link>
-          </button>
+          <Link to={product._id} className="card-button explore">
+            EXPLORE
+          </Link>
         )}
       </div>
     </div>

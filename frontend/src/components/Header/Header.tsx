@@ -42,12 +42,10 @@ const Header = () => {
           <span>Book your stay and enjoy Luxury redefined at the most affordable rates.</span>
         </div>
 
-        <button className="cursor">
+        <Link to="/contact" className="headerWrapper__button cursor">
           <AiOutlineSchedule />
-          <Link to="/contact">
-            <span>BOOK NOW</span>
-          </Link>
-        </button>
+          <span>BOOK NOW</span>
+        </Link>
 
         <a href="#main" className="scroll cursor">
           {pathname == "/" && (

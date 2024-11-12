@@ -67,3 +67,13 @@ export interface editFacilitiesType {
   text: string
   img: string
 }
+
+
+export interface TestimonialTypes {
+  _id: string
+  text: string
+  userName: string
+  createdAt: string
+  updatedAt: string
+  __v: number
+}

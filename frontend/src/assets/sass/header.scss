@@ -68,15 +68,13 @@ header {
       }
     }
 
-    button {
+    &__button {
       display: flex;
       align-items: center;
       align-self: center;
       gap: 5px;
       background-color: #e0b973;
-      width: fit-content;
       padding: 20px;
-      border: none;
       border-radius: 10px;
       font-family: var(--font-family);
       font-weight: 700;
