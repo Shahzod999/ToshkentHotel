@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { selecteduserInfo } from "../app/features/useInfoSlice";
-import { useAppSelector } from "../app/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks/hooks";
 import { BsFileEarmarkImageFill } from "react-icons/bs";
 
 import "../assets/sass/facilities.scss";
@@ -9,8 +9,10 @@ import { ErrorStateRoomAdd } from "../app/types/UserTypes";
 import ClearButton from "../components/Actions/ClearButton";
 import Loading from "../components/Actions/Loading";
 import FacilitiesCard from "../components/Facilities/FacilitiesCard";
+import { errorToast, infoToast, succesToast } from "../app/features/toastSlice";
 
 const Facilities = () => {
+  const dispatch = useAppDispatch();
   const userInfo = useAppSelector(selecteduserInfo);
   const { data: facilities, isLoading, isFetching } = useAllFacilitiesQuery();
   const [addFacilities, { isLoading: addFacilitiLoading }] = useAddFacilitiesMutation();
@@ -22,7 +24,7 @@ const Facilities = () => {
     const { img, text } = newFacility;
 
     if (!img || !text) {
-      return alert("All fields are required");
+      return dispatch(infoToast("All fields are required"));
     }
 
     const formData = new FormData();
@@ -30,13 +32,14 @@ const Facilities = () => {
     formData.append("text", text);
 
     try {
-      const res = await addFacilities(formData).unwrap();
-      console.log(res);
+      await addFacilities(formData).unwrap();
+      dispatch(succesToast("Успешно"));
       setNewFacility({ img: "", text: "" });
       setCommonError("");
     } catch (error) {
       console.error(error);
       setCommonError((error as ErrorStateRoomAdd).data);
+      dispatch(errorToast("Ошибка"));
     }
   };
 
@@ -45,7 +48,7 @@ const Facilities = () => {
 
     if (file) {
       if (file.size > 1 * 1024 * 1024) {
-        alert("Please upload an image that is 1MB or smaller.");
+        dispatch(infoToast("Please upload an image that is 1MB or smaller."));
         return;
       }
 

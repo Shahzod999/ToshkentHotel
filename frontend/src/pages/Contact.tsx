@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import "../assets/sass/contacts.scss";
+import { useAppDispatch } from "../app/hooks/hooks";
+import { errorToast, succesToast } from "../app/features/toastSlice";
 
 interface ContactFormInputs {
   name: string;
@@ -9,7 +11,8 @@ interface ContactFormInputs {
 }
 
 const Contact = () => {
-  const { register, handleSubmit } = useForm<ContactFormInputs>();
+  const dispatch = useAppDispatch();
+  const { register, handleSubmit, reset } = useForm<ContactFormInputs>();
 
   const onSubmit = (data: ContactFormInputs) => {
     const token = "7655108698:AAGTbJ9SPc3L95Xxe4PM3kZAAdy8KUBZnz4";
@@ -30,12 +33,16 @@ const Contact = () => {
       .then((response) => {
         if (response.ok) {
           console.log("Message sent successfully!");
+          dispatch(succesToast("Message sent successfully!"));
+          reset();
         } else {
           console.error("Failed to send message.");
+          dispatch(errorToast("Failed to send message."));
         }
       })
       .catch((error) => {
         console.error("Error:", error);
+        dispatch(errorToast("Ошибка"));
       });
   };
 

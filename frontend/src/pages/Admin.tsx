@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import "../assets/sass/admin.scss";
 import { useAddProductsMutation } from "../app/api/productsApiSlice";
 import { ErrorStateRoomAdd, ProductFormInputs } from "../app/types/UserTypes";
+import { errorToast, infoToast, succesToast } from "../app/features/toastSlice";
+import { useAppDispatch } from "../app/hooks/hooks";
 
 const Admin = () => {
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
@@ -28,19 +31,26 @@ const Admin = () => {
     formData.append("mainRoom", data.mainRoom ? "true" : "false");
 
     try {
-      const response = await addProducts(formData).unwrap();
-      console.log(response);
-      alert("Product added successfully");
+      await addProducts(formData).unwrap();
+      dispatch(succesToast("Product added successfully"));
       setImagePreview("");
     } catch (error) {
       console.error(error);
       setCommonError((error as ErrorStateRoomAdd).data);
+      dispatch(errorToast("error"));
     }
   };
 
   const handleImagePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCommonError("");
     const file = e.target.files && e.target.files[0];
     if (file) {
+      if (file.size > 1 * 1024 * 1024) {
+        dispatch(infoToast("Please upload an image that is 1MB or smaller."));
+        setImagePreview("");
+        setCommonError("Please upload an image that is 1MB or smaller.");
+        return;
+      }
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
@@ -49,6 +59,7 @@ const Admin = () => {
       };
       reader.onerror = (error) => {
         console.log("Error: ", error);
+        dispatch(errorToast("Ошибка"));
       };
     }
   };

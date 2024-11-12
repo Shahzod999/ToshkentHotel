@@ -2,7 +2,7 @@ import { FaUtensils, FaDumbbell, FaGem, FaComments } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import "../../assets/sass/roomCard.scss";
 import { RoomInfo } from "../../app/types/UserTypes";
-import { useAppSelector } from "../../app/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks/hooks";
 import { selecteduserInfo } from "../../app/features/useInfoSlice";
 import { MdRestoreFromTrash } from "react-icons/md";
 import { BsPenFill } from "react-icons/bs";
@@ -12,8 +12,10 @@ import { BsFileEarmarkImageFill } from "react-icons/bs";
 import Loading from "../Actions/Loading";
 import ClearButton from "../Actions/ClearButton";
 import { Link } from "react-router-dom";
+import { errorToast, infoToast, succesToast } from "../../app/features/toastSlice";
 
 const RoomCard = ({ item }: { item: RoomInfo }) => {
+  const dispatch = useAppDispatch();
   const userInfo = useAppSelector(selecteduserInfo);
   const [editProduct, { isLoading: updateLoading }] = useEditProductMutation();
   const [edit, setEdit] = useState(false);
@@ -28,10 +30,11 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
     try {
       const answer = window.confirm("Are u sure u want to delete this product?");
       if (!answer) return;
-      const { data } = await deleteProduct(item._id).unwrap();
-      console.log(data);
+      await deleteProduct(item._id).unwrap();
+      dispatch(succesToast("Delete Success"));
     } catch (err) {
       console.error("Failed to delete product:", error || err);
+      dispatch(errorToast("Failed to delete product"));
     }
   };
 
@@ -50,13 +53,12 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
       for (const key in product) {
         formData.append(key, product[key as keyof RoomInfo]?.toString() || "");
       }
-      const { data } = await editProduct({ id: product._id, formData });
-
-      alert("Nice");
+      await editProduct({ id: product._id, formData });
+      dispatch(succesToast("Edit Success"));
       setEdit(false);
-      console.log(data);
     } catch (err) {
       console.log(err);
+      dispatch(errorToast("Error try later"));
     }
   };
 
@@ -65,7 +67,7 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
 
     if (file) {
       if (file.size > 1 * 1024 * 1024) {
-        alert("Please upload an image that is 1MB or smaller.");
+        dispatch(infoToast("Please upload an image that is 1MB or smaller."));
         return;
       }
       const reader = new FileReader();
@@ -75,6 +77,7 @@ const RoomCard = ({ item }: { item: RoomInfo }) => {
         console.log(reader.result);
       };
       reader.onerror = (error) => {
+        dispatch(errorToast("Error try later"));
         console.log("Error: ", error);
       };
     }

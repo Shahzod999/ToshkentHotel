@@ -7,6 +7,8 @@ import { useDeleteFacilitiesMutation, useEditFacilitiesMutation } from "../../ap
 import { RiSave3Fill } from "react-icons/ri";
 import { FacilitiesType } from "../../app/types/UserTypes";
 import ClearButton from "../Actions/ClearButton";
+import { useAppDispatch } from "../../app/hooks/hooks";
+import { errorToast, infoToast, succesToast } from "../../app/features/toastSlice";
 
 interface FacilitiesTypes {
   item: FacilitiesType;
@@ -14,6 +16,7 @@ interface FacilitiesTypes {
 }
 
 const FacilitiesCard = ({ item, userInfo }: FacilitiesTypes) => {
+  const dispatch = useAppDispatch();
   const [deleteFacilities] = useDeleteFacilitiesMutation();
   const [editFacilities, { isLoading }] = useEditFacilitiesMutation();
   const [product, setProduct] = useState({
@@ -30,14 +33,18 @@ const FacilitiesCard = ({ item, userInfo }: FacilitiesTypes) => {
   const handleImagePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
     if (file) {
+      if (file.size > 1 * 1024 * 1024) {
+        dispatch(infoToast("Please upload an image that is 1MB or smaller."));
+        return;
+      }
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = () => {
         setProduct({ ...product, img: reader.result as string });
-        console.log(reader.result);
       };
       reader.onerror = (error) => {
         console.log("Error: ", error);
+        dispatch(errorToast("Ошибка"));
       };
     }
   };
@@ -47,8 +54,10 @@ const FacilitiesCard = ({ item, userInfo }: FacilitiesTypes) => {
       const answer = window.confirm("Are u sure u want to delete this product?");
       if (!answer) return;
       await deleteFacilities(item._id).unwrap();
+      dispatch(succesToast("Delete Success"));
     } catch (err) {
       console.error("Failed to delete product:", err);
+      dispatch(errorToast("Failed to delete product"));
     }
   };
 
@@ -58,12 +67,12 @@ const FacilitiesCard = ({ item, userInfo }: FacilitiesTypes) => {
     formData.append("text", product.text);
 
     try {
-      const res = await editFacilities({ id: item._id, data: formData }).unwrap();
-      alert("Nice");
+      await editFacilities({ id: item._id, data: formData }).unwrap();
+      dispatch(succesToast("Edit Success"));
       setEdit(false);
-      console.log(res);
     } catch (err) {
       console.log(err);
+      dispatch(errorToast("Error try later"));
     }
   };
   return (
