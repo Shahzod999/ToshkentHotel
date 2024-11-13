@@ -1,4 +1,4 @@
-import { TestimonialTypes } from "../types/UserTypes";
+import { AddTestimonialTypes, ErrorTesttimonialType, TestimonialTypes } from "../types/UserTypes";
 import { apiSlice } from "./apiSlice";
 
 export const testimonialsApiSlice = apiSlice.injectEndpoints({
@@ -7,7 +7,7 @@ export const testimonialsApiSlice = apiSlice.injectEndpoints({
       query: () => "/testimonials",
       providesTags: ["Testimonials"]
     }),
-    addTestimonials: builder.mutation({
+    addTestimonials: builder.mutation<TestimonialTypes | ErrorTesttimonialType, AddTestimonialTypes>({
       query: (data) => ({
         url: "/testimonials",
         method: "POST",
@@ -15,7 +15,7 @@ export const testimonialsApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Testimonials"]
     }),
-    deleteTestimonials: builder.mutation({
+    deleteTestimonials: builder.mutation<ErrorTesttimonialType | TestimonialTypes, string>({
       query: (id) => ({
         url: `/testimonials/${id}`,
         method: "DELETE"

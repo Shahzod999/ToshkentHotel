@@ -40,6 +40,35 @@
         font-size: 15px;
       }
     }
+    .mySwiper {
+      form {
+        font-family: var(--font3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        input,
+        textarea {
+          border: 0.5px solid lightgrey;
+          border-radius: 5px;
+          padding: 7px;
+          width: 200px;
+          @include media(300) {
+            width: 80%;
+          }
+        }
+      }
+    }
+
+    &__button {
+      background-color: #e0b973;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 10px;
+    }
   }
 
   .swiper {
@@ -60,8 +89,8 @@
     border: none;
     border-radius: 10px;
     padding: 25px;
-    top: auto;
-    bottom: 0;
+    top: unset;
+    bottom: -20px;
 
     &:hover {
       transform: scale(1.05);
@@ -73,13 +102,13 @@
       font-size: 20px !important;
     }
     @include media(450) {
-      padding: 5px;
+      padding: 5px 20px;
     }
   }
   .swiper-button-next {
-    right: 44%;
+    right: 22%;
   }
   .swiper-button-prev {
-    left: 44%;
+    left: 22%;
   }
 }

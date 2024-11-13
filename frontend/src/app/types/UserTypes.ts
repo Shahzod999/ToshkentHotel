@@ -77,3 +77,11 @@ export interface TestimonialTypes {
   updatedAt: string
   __v: number
 }
+export interface AddTestimonialTypes {
+  text: string
+  userName: string
+}
+export interface ErrorTesttimonialType {
+  status: number
+  data: string
+}

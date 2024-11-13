@@ -87,3 +87,8 @@ a {
     margin: 3px;
   }
 }
+
+button:disabled {
+  cursor: not-allowed;
+  filter: blur(0.7px) grayscale(0.7);
+}

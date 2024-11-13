@@ -55,7 +55,7 @@ const Contact = () => {
 
       <div className="contacts__card">
         <div className="contacts__card__text">
-          <h3>497 Evergreen Rd. Roseville, CA 95673</h3>
+          <h3>Q93G+W85, Andijon, Andijon Viloyati, Узбекистан</h3>
           <span>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d807.1172126409499!2d72.37577825245562!3d40.754834755323024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bcecff1eb4fe6d%3A0x9b79107f9b65fbd5!2sToshkent%20Hotel!5e1!3m2!1sru!2s!4v1731142063857!5m2!1sru!2s"
