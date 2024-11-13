@@ -1,0 +1,26 @@
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+
+  gap: 25px;
+
+  h2 {
+    font-size: 5vh;
+  }
+  span {
+    font-size: 2vh;
+  }
+
+  &__link {
+    padding: 5px 25px;
+    border-radius: 5px;
+    border: none;
+    font-size: 2vh;
+    background-color: #294069;
+    color: white;
+    cursor: pointer;
+  }
+}

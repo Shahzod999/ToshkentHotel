@@ -63,7 +63,7 @@ const Testimonials = () => {
               <SwiperSlide key={item._id}>
                 <p>{item.text}</p>
                 <span>{item.userName}</span>
-                {!userInfo && (
+                {userInfo && (
                   <div>
                     <button disabled={deleteLoading} onClick={() => handleDelete(item._id)} type="submit" className="cursor testimonials__card__button">
                       delete

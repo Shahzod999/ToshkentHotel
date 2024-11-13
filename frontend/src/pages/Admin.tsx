@@ -4,9 +4,14 @@ import "../assets/sass/admin.scss";
 import { useAddProductsMutation } from "../app/api/productsApiSlice";
 import { ErrorStateRoomAdd, ProductFormInputs } from "../app/types/UserTypes";
 import { errorToast, infoToast, succesToast } from "../app/features/toastSlice";
-import { useAppDispatch } from "../app/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks/hooks";
+import { selecteduserInfo } from "../app/features/useInfoSlice";
+import Error from "../components/Actions/Error";
 
 const Admin = () => {
+  const userInfo = useAppSelector(selecteduserInfo);
+  if (!userInfo) return <Error />;
+
   const dispatch = useAppDispatch();
   const {
     register,

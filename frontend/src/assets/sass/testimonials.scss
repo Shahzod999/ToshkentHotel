@@ -21,15 +21,16 @@
     }
 
     p {
+      width: 50%;
       font-family: var(--font-family);
-      font-size: 30px;
+      font-size: 25px;
       color: #14274a;
-      margin: 25px 0;
+      margin: 25px auto;
       @include media(1600) {
-        font-size: 20px;
+        font-size: 17px;
       }
       @include media(450) {
-        font-size: 17px;
+        font-size: 15px;
       }
     }
     span {
